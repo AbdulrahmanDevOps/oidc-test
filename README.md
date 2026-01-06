@@ -145,7 +145,7 @@ jobs:
 
 * `ACCOUNT_ID` → your AWS account ID
 * `github-oidc-role` → your IAM role name
-
+* `us-east-1` → your aws-region
 ---
 
 ## Step 6: Push Code to GitHub
