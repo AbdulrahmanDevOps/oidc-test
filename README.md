@@ -10,12 +10,12 @@ Instead of storing secrets, we use **OIDC (OpenID Connect)** which gives **tempo
 
 ## Why Use OIDC?
 
-❌ No AWS Access Key
-❌ No Secret Key stored in GitHub
+1. No AWS Access Key
+2. No Secret Key stored in GitHub
 
-✅ More secure
-✅ AWS recommended approach
-✅ Temporary credentials (auto-expire)
+3. More secure
+4. AWS recommended approach
+5. Temporary credentials (auto-expire)
 
 ---
 
@@ -79,7 +79,7 @@ GitHub Actions → OIDC Token → AWS IAM Role → AWS Services
 
 ## Step 3: Create IAM Role in AWS
 
-1. Go to **IAM → Roles → Create role**
+1. Go to **Assign Roles → Create role**
 2. Select **Web identity**
 3. Choose:
 
@@ -95,7 +95,7 @@ GitHub Actions → OIDC Token → AWS IAM Role → AWS Services
    ```
 6. Create the role
 
-📌 Copy the **Role ARN** (you’ll need it later)
+ Copy the **Role ARN** (you’ll need it later)
 
 ---
 
@@ -106,7 +106,7 @@ GitHub Actions → OIDC Token → AWS IAM Role → AWS Services
    ```
    .github/workflows/aws-oidc.yml
    ```
-2. Paste the following code 👇
+2. Paste the following code 
 
 ---
 
@@ -141,7 +141,7 @@ jobs:
         run: aws sts get-caller-identity
 ```
 
-🔁 Replace:
+### Replace:
 
 * `ACCOUNT_ID` → your AWS account ID
 * `github-oidc-role` → your IAM role name
@@ -183,12 +183,12 @@ If successful, you will see:
 
 ## Common Beginner Mistakes
 
-❗ Wrong IAM Role ARN
-❗ Missing `id-token: write` permission
-❗ OIDC provider not created in AWS
+1. Wrong IAM Role ARN
+2. Missing `id-token: write` permission
+3. OIDC provider not created in AWS
 
-✔ Double-check role ARN
-✔ Ensure permissions are correct
-✔ Check workflow logs
+1. Double-check role ARN
+2. Ensure permissions are correct
+3. Check workflow logs
 
 ---
